@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import Profile from './components/Profile';
+import Links from './components/Links';
+import linksData from './components/LinksData'
+import Footer from './components/Footer';
 
 function App() {
+  const eachLink = linksData.map( data => {
+        return  <Links 
+                  {...data} 
+                  key={data.id} 
+                />
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-md-5 mt-4">
+      <Profile />
+      <div className="d-grid gap-3 pt-2">
+        {eachLink}
+      </div>
+      <Footer />
     </div>
   );
 }
